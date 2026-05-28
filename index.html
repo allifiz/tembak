@@ -422,15 +422,29 @@
 
     let noCount = 0;
 
-    function clickNo() {
-      if (noCount < noTexts.length) {
-        noBtn.innerText = noTexts[noCount];
-        note.innerText = notes[noCount];
-        noCount++;
-        noBtn.style.transform = `scale(${Math.max(.7, 1 - noCount * .05)})`;
-        buttons.insertBefore(noBtn, buttons.firstChild);
-        return;
-      }
+function clickNo(){
+
+  if(noCount < noTexts.length){
+
+    noBtn.innerText = noTexts[noCount];
+    note.innerText = notes[noCount];
+
+    noCount++;
+
+    noBtn.style.transform = `scale(${Math.max(.7,1-noCount*.05)})`;
+
+    // pindah kiri kanan bergantian
+    if(noCount % 2 === 1){
+      noBtn.style.transform += ' translateX(-45px)';
+    } else {
+      noBtn.style.transform += ' translateX(45px)';
+    }
+
+    return;
+  }
+
+  popup.classList.add('show');
+}
 
       popup.classList.add('show');
     }
